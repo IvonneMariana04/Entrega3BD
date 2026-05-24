@@ -501,7 +501,8 @@ def comparativo_ciudad(ciudad: str):
         },
         {
             "$sort": {
-                "calificacion_promedio": 1
+                "calificacion_promedio": 1,
+                "id_hotel": 1
             }
         }
     ]
