@@ -465,46 +465,46 @@ def comparativo_ciudad(ciudad: str):
             }
         },
         {
-            "$project": {
-                "_id": 0,
-                "id_hotel": "$_id.id_hotel",
-                "nombre_hotel": "$_id.nombre_hotel",
-                "calificacion_promedio": {"$round": ["$calificacion_promedio", 2]},
-                "total_resenas": 1,
-                "porcentaje_con_respuesta": {
-                    "$round": [
-                        {
-                            "$multiply": [
-                                {"$divide": ["$resenas_con_respuesta", "$total_resenas"]},
-                                100
-                            ]
-                        },
-                        2
-                    ]
-                },
-                "porcentaje_destacadas": {
-                    "$round": [
-                        {
-                            "$multiply": [
-                                {"$divide": ["$resenas_destacadas", "$total_resenas"]},
-                                100
-                            ]
-                        },
-                        2
-                    ]
-                },
-                "promedio_ciudad": {"$round": ["$promedio_ciudad", 2]},
-                "debajo_promedio_ciudad": {
-                    "$lt": ["$calificacion_promedio", "$promedio_ciudad"]
-                }
-            }
-        },
-        {
-            "$sort": {
-                "calificacion_promedio": 1,
-                "id_hotel": 1
+        "$project": {
+            "_id": 0,
+            "id_hotel": "$_id.id_hotel",
+            "nombre_hotel": "$_id.nombre_hotel",
+            "calificacion_promedio": {"$round": ["$calificacion_promedio", 2]},
+            "total_resenas": 1,
+            "porcentaje_con_respuesta": {
+                "$round": [
+                    {
+                        "$multiply": [
+                            {"$divide": ["$resenas_con_respuesta", "$total_resenas"]},
+                            100
+                        ]
+                    },
+                    2
+                ]
+            },
+            "porcentaje_destacadas": {
+                "$round": [
+                    {
+                        "$multiply": [
+                            {"$divide": ["$resenas_destacadas", "$total_resenas"]},
+                            100
+                        ]
+                    },
+                    2
+                ]
+            },
+            "promedio_ciudad": {"$round": ["$promedio_ciudad", 2]},
+            "debajo_promedio_ciudad": {
+                "$lt": ["$calificacion_promedio", "$promedio_ciudad"]
             }
         }
+    },
+    {
+        "$sort": {
+            "calificacion_promedio": 1,
+            "id_hotel": 1
+        }
+    }
     ]
 
     return list(resenas.aggregate(pipeline))
