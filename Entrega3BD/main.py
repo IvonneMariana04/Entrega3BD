@@ -15,8 +15,8 @@ app.add_middleware(
 )
 
 # Para Render se usa variable de entorno MONGO_URI
-#client = MongoClient(os.environ["MONGO_URI"])
-client = MongoClient("mongodb://ISIS2304F09202610:Bem4bmKESQKU@157.253.236.88:8087")
+#client = MongoClient("mongodb://ISIS2304F09202610:Bem4bmKESQKU@157.253.236.88:8087")
+client = MongoClient(os.environ["MONGO_URI"])
 
 # Base de datos
 db = client["ISIS2304F09202610"]
