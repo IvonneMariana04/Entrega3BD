@@ -342,7 +342,8 @@ def top_hoteles(fecha_inicio: str, fecha_fin: str):
         {
             "$sort": {
                 "calificacion_promedio": -1,
-                "total_resenas": -1
+                "total_resenas": -1,
+                "_id.id_hotel": 1
             }
         },
         {
