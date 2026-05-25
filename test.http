@@ -1,7 +1,0 @@
-POST  http://127.0.0.1:8000/bares/1/comentarios
-Content-Type: application/json
-
-{
-    "bar_id": 1,
-    "comentario": "Buen servicio"
-}
